@@ -1,1 +1,1 @@
-# github-automatically-generated-release-sample
+# dot-github-sample
