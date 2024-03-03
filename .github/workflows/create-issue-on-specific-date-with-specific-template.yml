@@ -33,7 +33,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           TITLE: Team sync
           ASSIGNEES: hoshikawa
-          LABELS: weekly sync,docs-team
+          LABELS: bug,duplicate,wontfix
           TEMPLATE: feature_request
           PINNED: false
           CLOSE_PREVIOUS: false
