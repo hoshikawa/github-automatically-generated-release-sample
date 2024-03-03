@@ -8,6 +8,8 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@main
       - name: Create issue
         run: |
           if [[ $CLOSE_PREVIOUS == true ]]; then
@@ -24,7 +26,7 @@ jobs:
             --title "$TITLE" \
             --assignee "$ASSIGNEES" \
             --label "$LABELS" \
-            --template "$TEMPLATE")
+            --body-file "$BODY_FILE")
           if [[ $PINNED == true ]]; then
             gh issue pin "$new_issue_url"
           fi
@@ -34,6 +36,6 @@ jobs:
           TITLE: Team sync
           ASSIGNEES: hoshikawa
           LABELS: bug,duplicate,wontfix
-          TEMPLATE: feature_request
+          BODY_FILE: ./.github/ISSUE_TEMPLATE/feature_request.md
           PINNED: false
           CLOSE_PREVIOUS: false
