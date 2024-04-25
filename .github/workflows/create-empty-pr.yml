@@ -1,0 +1,24 @@
+name: create an empty PR
+on:
+  workflow_dispatch: 
+
+jobs:
+  create_pr:
+    name: Create PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create PR
+        run: |
+          git checkout -b test
+          git commit --allow-empty -m "Put PR title here"
+          # email, name
+          git push
+          gh pr create --fill
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
