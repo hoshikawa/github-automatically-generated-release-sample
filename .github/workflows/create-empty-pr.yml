@@ -18,7 +18,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git checkout -b test
           git commit --allow-empty -m "Put PR title here"
-          git push
+          git push --set-upstream origin test
           gh pr create --fill
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
